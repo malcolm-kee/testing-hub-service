@@ -1,0 +1,88 @@
+{
+	"info": {
+		"_postman_id": "115220b3-1df7-44e3-b920-4b806604b28d",
+		"name": "Testing Hub",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Get All Scenarios",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{BASE_URL}}/scenario",
+					"host": [
+						"{{BASE_URL}}"
+					],
+					"path": [
+						"scenario"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create Scenario",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"title\": \"Home Page Smoke Test\",\n\t\"tags\": [\"smoke-test\"],\n\t\"steps\": []\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{BASE_URL}}/scenario",
+					"host": [
+						"{{BASE_URL}}"
+					],
+					"path": [
+						"scenario"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update Scenario",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"tags\": [\r\n        \"smoke-test\", \"low-effort\"\r\n    ],\r\n    \"title\": \"Home Smoke Test\",\r\n    \"steps\": [{\r\n    \t\r\n    }],\r\n    \"__v\": 0\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{BASE_URL}}/scenario/5e7f0f7994997f0d6a717e27",
+					"host": [
+						"{{BASE_URL}}"
+					],
+					"path": [
+						"scenario",
+						"5e7f0f7994997f0d6a717e27"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"variable": [
+		{
+			"id": "ad04b436-c90a-4762-b344-b218746def96",
+			"key": "BASE_URL",
+			"value": "http://localhost:3000",
+			"type": "string"
+		}
+	],
+	"protocolProfileBehavior": {}
+}
