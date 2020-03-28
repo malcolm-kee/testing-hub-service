@@ -1,4 +1,5 @@
 import { Schema } from 'mongoose';
+import { PERMUTATION_SCHEMA_NAME } from 'src/permutation';
 import { ScenarioDocument } from './scenario.type';
 
 export const ScenarioSchema = new Schema<ScenarioDocument>(
@@ -14,6 +15,12 @@ export const ScenarioSchema = new Schema<ScenarioDocument>(
       },
     ],
     tags: [String],
+    permutationIds: [
+      {
+        type: Schema.Types.ObjectId,
+        ref: PERMUTATION_SCHEMA_NAME,
+      },
+    ],
     startUrl: String,
   },
   {

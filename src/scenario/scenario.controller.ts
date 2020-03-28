@@ -7,7 +7,7 @@ import {
   Post,
   Put,
 } from '@nestjs/common';
-import { CreateScenarioDto, UpdateScenarioDto } from './scenario.dto';
+import { ScenarioDto } from './scenario.dto';
 import { ScenarioService } from './scenario.service';
 
 @Controller('scenario')
@@ -20,15 +20,12 @@ export class ScenarioController {
   }
 
   @Post()
-  createScenario(@Body() createDto: CreateScenarioDto) {
+  createScenario(@Body() createDto: ScenarioDto) {
     return this.scenarioService.create(createDto);
   }
 
   @Put(':id')
-  updateScenario(
-    @Param('id') id: string,
-    @Body() updateDto: UpdateScenarioDto,
-  ) {
+  updateScenario(@Param('id') id: string, @Body() updateDto: ScenarioDto) {
     return this.scenarioService.update(id, updateDto);
   }
 

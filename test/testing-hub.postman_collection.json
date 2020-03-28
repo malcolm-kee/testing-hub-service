@@ -6,79 +6,293 @@
 	},
 	"item": [
 		{
-			"name": "Get All Scenarios",
-			"request": {
-				"method": "GET",
-				"header": [],
-				"url": {
-					"raw": "{{BASE_URL}}/scenario",
-					"host": [
-						"{{BASE_URL}}"
-					],
-					"path": [
-						"scenario"
-					]
+			"name": "Scenario",
+			"item": [
+				{
+					"name": "Get All Scenarios",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{BASE_URL}}/scenario",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"scenario"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create Scenario",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"title\": \"Home Page Smoke Test 2\",\n\t\"tags\": [\"smoke-test\"],\n\t\"startUrl\": \"https://malcolmkee.com\",\n\t\"steps\": [],\n\t\"permutationIds\": [\"5e7f3bc8f6097f185715f7d4\"]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BASE_URL}}/scenario",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"scenario"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Scenario",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"tags\": [\r\n        \"smoke-test\"\r\n    ],\r\n    \"title\": \"Home Smoke Test\",\r\n    \"startUrl\": \"\",\r\n    \"steps\": [{\r\n    \t\"action\": \"visit https://malcolmkee.com\",\r\n    \t\"result\": \"Verify page load without error\"\r\n    }, {\r\n    \t\"action\": \"scroll down the page\",\r\n    \t    \t\"result\": \"The content form is displayed.\"\r\n    }]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BASE_URL}}/scenario/5e7f1cc9eac430117cf7fdd0",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"scenario",
+								"5e7f1cc9eac430117cf7fdd0"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Scenario",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{BASE_URL}}/scenario/:id",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"scenario",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "5e7f1cc9eac430117cf7fdd0"
+								}
+							]
+						}
+					},
+					"response": []
 				}
-			},
-			"response": []
+			],
+			"protocolProfileBehavior": {}
 		},
 		{
-			"name": "Create Scenario",
-			"request": {
-				"method": "POST",
-				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": "{\n\t\"title\": \"Home Page Smoke Test\",\n\t\"tags\": [\"smoke-test\"],\n\t\"steps\": []\n}",
-					"options": {
-						"raw": {
-							"language": "json"
+			"name": "Permutation",
+			"item": [
+				{
+					"name": "Create Permutation Template",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"user\",\n    \"fields\": [\n        {\n        \t\"name\": \"nric\",\n        \t\"fieldType\": \"text\",\n        \t\"options\": []\n        }\n    ]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BASE_URL}}/permutation/template",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"permutation",
+								"template"
+							]
 						}
-					}
+					},
+					"response": []
 				},
-				"url": {
-					"raw": "{{BASE_URL}}/scenario",
-					"host": [
-						"{{BASE_URL}}"
-					],
-					"path": [
-						"scenario"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "Update Scenario",
-			"request": {
-				"method": "PUT",
-				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": "{\r\n    \"tags\": [\r\n        \"smoke-test\", \"low-effort\"\r\n    ],\r\n    \"title\": \"Home Smoke Test\",\r\n    \"steps\": [{\r\n    \t\r\n    }],\r\n    \"__v\": 0\r\n}",
-					"options": {
-						"raw": {
-							"language": "json"
+				{
+					"name": "Update Permutation Template",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"user\",\n    \"fields\": [\n        {\n        \t\"name\": \"nric\",\n        \t\"fieldType\": \"text\",\n        \t\"options\": []\n        },\n        {\n        \t\"name\": \"gender\",\n        \t\"fieldType\": \"select\",\n        \t\"options\": [\n        \t\t{\n        \t\t\t\"label\": \"Male\",\n        \t\t\t\"value\": \"male\"\n        \t\t},\n        \t\t{\n        \t\t\t\"label\": \"Female\",\n        \t\t\t\"value\": \"female\"\n        \t\t}\n        \t]\n        }\n    ]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BASE_URL}}/permutation/template/:id",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"permutation",
+								"template",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "5e7f3584f6097f185715f7ce"
+								}
+							]
 						}
-					}
+					},
+					"response": []
 				},
-				"url": {
-					"raw": "{{BASE_URL}}/scenario/5e7f0f7994997f0d6a717e27",
-					"host": [
-						"{{BASE_URL}}"
-					],
-					"path": [
-						"scenario",
-						"5e7f0f7994997f0d6a717e27"
-					]
+				{
+					"name": "Create Permutation",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"name\": \"Male User\",\n\t\"templateId\": \"5e7f3584f6097f185715f7ce\",\n\t\"tags\": [\n\t\t\"consumer\"],\n\t\t\"fieldValues\": {\n\t\t\t\"nric\": \"901013-10-5775\",\n\t\t\t\"gender\": \"male\"\n\t\t}\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BASE_URL}}/permutation/record",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"permutation",
+								"record"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get All Permutation for Template",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{BASE_URL}}/permutation/record/template/:templateId",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"permutation",
+								"record",
+								"template",
+								":templateId"
+							],
+							"variable": [
+								{
+									"key": "templateId",
+									"value": "5e7f3584f6097f185715f7ce"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Permutation Template",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BASE_URL}}/permutation/template/:id",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"permutation",
+								"template",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "5e7f3584f6097f185715f7ce"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get All Permutations",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BASE_URL}}/permutation/record",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"permutation",
+								"record"
+							]
+						}
+					},
+					"response": []
 				}
-			},
-			"response": []
+			],
+			"protocolProfileBehavior": {}
 		}
 	],
 	"variable": [
 		{
-			"id": "ad04b436-c90a-4762-b344-b218746def96",
+			"id": "0cd66ff8-15ee-4b18-a630-1d891bc12e16",
 			"key": "BASE_URL",
 			"value": "http://localhost:3000",
 			"type": "string"

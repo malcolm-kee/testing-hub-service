@@ -2,6 +2,7 @@ import { Module } from '@nestjs/common';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 import { MongooseModule } from '@nestjs/mongoose';
 import { MONGO_URL } from './app.type';
+import { PermutationModule } from './permutation';
 import { ScenarioModule } from './scenario/scenario.module';
 
 @Module({
@@ -20,6 +21,7 @@ import { ScenarioModule } from './scenario/scenario.module';
       }),
     }),
     ScenarioModule,
+    PermutationModule,
   ],
 })
 export class AppModule {}

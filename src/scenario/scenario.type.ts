@@ -10,6 +10,7 @@ export type Scenario = {
   steps: ScenarioStep[];
   tags: string[];
   startUrl: string;
+  permutationIds: string[];
 };
 
 export type ScenarioDocument = Scenario & Document;

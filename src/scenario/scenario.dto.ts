@@ -3,9 +3,9 @@ import {
   IsArray,
   IsNotEmpty,
   IsString,
-  ValidateNested,
   IsUrl,
   ValidateIf,
+  ValidateNested,
 } from 'class-validator';
 import { Scenario, ScenarioStep } from './scenario.type';
 
@@ -19,11 +19,12 @@ class ScenarioStepDto implements ScenarioStep {
   readonly result: string;
 }
 
-export class CreateScenarioDto implements Scenario {
+export class ScenarioDto implements Scenario {
   @IsString()
   @IsNotEmpty()
   readonly title: string;
 
+  @IsArray()
   @IsString({
     each: true,
   })
@@ -36,28 +37,12 @@ export class CreateScenarioDto implements Scenario {
 
   @IsArray()
   @ValidateNested()
-  readonly steps: ScenarioStepDto[];
-}
-
-export class UpdateScenarioDto implements Scenario {
-  @IsString()
-  @IsNotEmpty()
-  readonly title: string;
-
-  @IsString({
-    each: true,
-  })
-  readonly tags: string[];
-
-  @IsArray()
-  @ValidateNested({
-    each: true,
-  })
   @Type(() => ScenarioStepDto)
   readonly steps: ScenarioStepDto[];
 
-  @IsString()
-  @IsUrl()
-  @ValidateIf(e => e.startUrl !== '')
-  readonly startUrl: string;
+  @IsArray()
+  @IsString({
+    each: true,
+  })
+  readonly permutationIds: string[];
 }
