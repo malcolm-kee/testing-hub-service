@@ -24,22 +24,23 @@ export class ScenarioService {
     return newScenario.save();
   }
 
-  async update(scenarioId: string, scenario: Scenario) {
-    const result = await this.scenarioSchema.findByIdAndUpdate(
-      scenarioId,
-      {
-        $set: {
-          title: scenario.title,
-          tags: scenario.tags,
-          steps: scenario.steps,
+  update(scenarioId: string, scenario: Scenario) {
+    return this.scenarioSchema
+      .findByIdAndUpdate(
+        scenarioId,
+        {
+          $set: {
+            title: scenario.title,
+            tags: scenario.tags,
+            steps: scenario.steps,
+            startUrl: scenario.startUrl,
+          },
         },
-      },
-      {
-        new: true,
-      },
-    );
-
-    return result;
+        {
+          new: true,
+        },
+      )
+      .exec();
   }
 
   delete(scenarioId: string) {

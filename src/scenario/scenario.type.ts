@@ -7,8 +7,9 @@ export type ScenarioStep = {
 
 export type Scenario = {
   title: string;
-  tags: string[];
   steps: ScenarioStep[];
+  tags: string[];
+  startUrl: string;
 };
 
 export type ScenarioDocument = Scenario & Document;

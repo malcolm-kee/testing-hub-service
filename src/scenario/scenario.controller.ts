@@ -1,4 +1,12 @@
-import { Body, Controller, Get, Post, Put, Param } from '@nestjs/common';
+import {
+  Body,
+  Controller,
+  Delete,
+  Get,
+  Param,
+  Post,
+  Put,
+} from '@nestjs/common';
 import { CreateScenarioDto, UpdateScenarioDto } from './scenario.dto';
 import { ScenarioService } from './scenario.service';
 
@@ -22,5 +30,10 @@ export class ScenarioController {
     @Body() updateDto: UpdateScenarioDto,
   ) {
     return this.scenarioService.update(id, updateDto);
+  }
+
+  @Delete(':id')
+  deleteScenario(@Param('id') id: string) {
+    return this.scenarioService.delete(id);
   }
 }

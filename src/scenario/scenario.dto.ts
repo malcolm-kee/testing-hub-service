@@ -1,5 +1,12 @@
 import { Type } from 'class-transformer';
-import { IsArray, IsNotEmpty, IsString, ValidateNested } from 'class-validator';
+import {
+  IsArray,
+  IsNotEmpty,
+  IsString,
+  ValidateNested,
+  IsUrl,
+  ValidateIf,
+} from 'class-validator';
 import { Scenario, ScenarioStep } from './scenario.type';
 
 class ScenarioStepDto implements ScenarioStep {
@@ -22,6 +29,11 @@ export class CreateScenarioDto implements Scenario {
   })
   readonly tags: string[];
 
+  @IsString()
+  @IsUrl()
+  @ValidateIf(e => e.startUrl !== '')
+  readonly startUrl: string;
+
   @IsArray()
   @ValidateNested()
   readonly steps: ScenarioStepDto[];
@@ -43,4 +55,9 @@ export class UpdateScenarioDto implements Scenario {
   })
   @Type(() => ScenarioStepDto)
   readonly steps: ScenarioStepDto[];
+
+  @IsString()
+  @IsUrl()
+  @ValidateIf(e => e.startUrl !== '')
+  readonly startUrl: string;
 }

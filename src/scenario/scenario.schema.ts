@@ -7,13 +7,14 @@ export const ScenarioSchema = new Schema<ScenarioDocument>(
       type: String,
       required: true,
     },
-    tags: [String],
     steps: [
       {
         action: String,
         result: String,
       },
     ],
+    tags: [String],
+    startUrl: String,
   },
   {
     timestamps: true,
