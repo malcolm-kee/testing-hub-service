@@ -3,6 +3,7 @@ import { Document } from 'mongoose';
 export type PermutationTemplateField = {
   name: string;
   fieldType: 'text' | 'textarea' | 'checkbox' | 'select' | 'multiselect';
+  fieldKey: string;
   options: Array<{
     label: string;
     value: string;

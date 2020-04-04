@@ -50,6 +50,10 @@ class PermutationTemplateFieldDto implements PermutationTemplateField {
   @IsIn(['text', 'textarea', 'checkbox', 'select', 'multiselect'])
   readonly fieldType: PermutationTemplateField['fieldType'];
 
+  @IsString()
+  @IsNotEmpty()
+  readonly fieldKey: string;
+
   @IsArray()
   @ValidateNested()
   @Type(() => PermutationTemplateFieldOptionDto)

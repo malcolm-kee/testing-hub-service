@@ -43,6 +43,10 @@ export const PermutationTemplateSchema = new Schema<
           enum: ['text', 'textarea', 'checkbox', 'select', 'multiselect'],
           required: true,
         },
+        fieldKey: {
+          type: String,
+          required: true,
+        },
         options: [
           {
             label: {
