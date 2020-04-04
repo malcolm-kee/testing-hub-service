@@ -6,6 +6,7 @@ import {
   IsIn,
   IsArray,
   ValidateNested,
+  IsBoolean,
 } from 'class-validator';
 import {
   Permutation,
@@ -53,6 +54,9 @@ class PermutationTemplateFieldDto implements PermutationTemplateField {
   @IsString()
   @IsNotEmpty()
   readonly fieldKey: string;
+
+  @IsBoolean()
+  readonly isRequired: boolean;
 
   @IsArray()
   @ValidateNested()

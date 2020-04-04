@@ -47,6 +47,10 @@ export const PermutationTemplateSchema = new Schema<
           type: String,
           required: true,
         },
+        isRequired: {
+          type: Boolean,
+          required: true,
+        },
         options: [
           {
             label: {

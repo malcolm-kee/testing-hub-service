@@ -8,6 +8,7 @@ export type PermutationTemplateField = {
     label: string;
     value: string;
   }>;
+  isRequired: boolean;
 };
 
 export type PermutationTemplate = {
