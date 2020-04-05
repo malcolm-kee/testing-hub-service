@@ -7,6 +7,7 @@ import {
   IsArray,
   ValidateNested,
   IsBoolean,
+  IsOptional,
 } from 'class-validator';
 import {
   Permutation,
@@ -43,6 +44,10 @@ class PermutationTemplateFieldOptionDto {
 }
 
 class PermutationTemplateFieldDto implements PermutationTemplateField {
+  @IsOptional()
+  @IsMongoId()
+  readonly _id: string;
+
   @IsString()
   @IsNotEmpty()
   readonly name: string;
